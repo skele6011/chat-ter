@@ -1,0 +1,137 @@
+:root {
+    --primary-green: #033703;
+    --dark-green: #033703;
+    --black: #000000;
+    --gray: #9a9a9a;
+    --error-red: #ff3333;
+    --success-green: #00ff00;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--primary-green);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: var(--gray);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.form-toggle {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form-toggle button {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    color: var(--primary-green);
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.form-toggle button.active {
+    opacity: 1;
+    border-bottom: 2px solid var(--primary-green);
+}
+
+form {
+    display: none;
+}
+
+form.active {
+    display: block;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: var(--black);
+    border: 1px solid var(--dark-green);
+    color: lightgreen;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--dark-green);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-green);
+    color: var(--black);
+}
+
+.error-message {
+    color: var(--error-red);
+    font-size: 0.8em;
+    margin-bottom: 10px;
+    min-height: 1em;
+}
+
+button[type="submit"].loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    position: relative;
+}
+
+button[type="submit"].loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: var(--primary-green);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+input.error {
+    border-color: var(--error-red);
+}

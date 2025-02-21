@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatter | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-toggle">
+                <button id="loginBtn" class="active">Login</button>
+                <button id="signupBtn">Sign Up</button>
+            </div>
+            
+            <form id="loginForm" class="active">
+                <h2>Welcome Back!</h2>
+                <input type="text" placeholder="Username" required data-validate="username">
+                <div class="error-message" id="loginUsernameError"></div>
+                <input type="password" placeholder="Password" required data-validate="password">
+                <div class="error-message" id="loginPasswordError"></div>
+                <button type="submit">Login</button>
+            </form>
+
+            <form id="signupForm">
+                <h2>Create Account</h2>
+                <input type="text" placeholder="Username" required data-validate="username">
+                <div class="error-message" id="signupUsernameError"></div>
+                <input type="password" placeholder="Password" required data-validate="password">
+                <div class="error-message" id="signupPasswordError"></div>
+                <input type="password" placeholder="Confirm Password" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
