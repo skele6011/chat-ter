@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const sendButton = document.querySelector('.send-btn');
     const messagesContainer = document.querySelector('.messages-container');
     const chatList = document.querySelector('.chat-list');
+    const sidebar = document.querySelector('.sidebar');
+    const toggleSidebarBtn = document.querySelector('.toggle-sidebar-btn');
     
     const token = localStorage.getItem('token');
     if (!token) {
@@ -187,10 +189,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 
-    chatItems.forEach(item => {
+    // Remove this block as it's using undefined chatItems
+    // chatItems.forEach(item => {
+    //     item.addEventListener('click', () => {
+    //         chatItems.forEach(i => i.classList.remove('active'));
+    //         item.classList.add('active');
+    //     });
+    // });
+
+    // Replace with this updated toggle button listener
+    toggleSidebarBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+        const icon = toggleSidebarBtn.querySelector('i');
+        if (sidebar.classList.contains('hidden')) {
+            icon.classList.remove('fa-chevron-left');
+            icon.classList.add('fa-chevron-right');
+        } else {
+            icon.classList.remove('fa-chevron-right');
+            icon.classList.add('fa-chevron-left');
+        }
+        console.log('Sidebar toggled'); // Add this to debug
+    });
+
+    document.querySelectorAll('.chat-item').forEach(item => {
         item.addEventListener('click', () => {
-            chatItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
+            if (window.innerWidth <= 768) {
+                sidebar.classList.add('hidden');
+            }
         });
     });
 
@@ -259,6 +284,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         .messages-container::-webkit-scrollbar-thumb {
             background: var(--gray);
             border-radius: 3px;
+        }
+
+        // Add this CSS modification to make the toggle button always visible
+        .toggle-sidebar-btn {
+            display: block !important; // Override the previous display: none
         }
     `;
     document.head.appendChild(style);
